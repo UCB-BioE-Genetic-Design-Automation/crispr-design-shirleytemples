@@ -1,26 +1,28 @@
 package org.bioe134.crispr;
 
-import javafx.util.Pair;
-
 /**
  *
  * @author J. Christopher Anderson
  */
 public class Design_CRISPR_Oligos {
-    
+
+    private Object String;
+
     public void initiate() throws Exception {
         
         //TODO:  write this initiate (if needed)
         
     }
     
-    public Pair<String,String> run(String cds) throws Exception {
+    public java.lang.String[] run(String cds) throws Exception {
         
         //TODO:  write this algorithm, put the oligo sequences in line below
-        
-        Pair<String,String> out = new Pair<>("oligo1_here", "oligo2_here");
-        return out;
-    }
+        String PAM = "GG";
+            String[] out = new String[2];
+            out[0] = "CCATA" + "ACTAGT" + cds.substring(cds.lastIndexOf(PAM) - 20, cds.lastIndexOf(PAM)) + "GTTTTAGAGCTAGAAATAGCAAG";
+            out[1] = "CTCAG" + "ACTAGTATTATACCTAGGACTGAGCTAG";
+            return out;
+        }
     
     public static void main(String[] args) throws Exception {
         //Create some exampole arguments, here the amilGFP coding sequence
@@ -31,10 +33,10 @@ public class Design_CRISPR_Oligos {
         func.initiate();
         
         //Run the function on the example
-        Pair<String,String> oligos = func.run(cds);
+        String[] oligos = func.run(cds);
         
         //Print out the result
-        System.out.println("oligo1: " + oligos.getKey());
-        System.out.println("oligo2: " + oligos.getValue());
+        System.out.println("oligo1: " + oligos[0]);
+        System.out.println("oligo2: " + oligos[1]);
     }
 }
